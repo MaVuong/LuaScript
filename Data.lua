@@ -4,7 +4,7 @@ function LKS_DidFinishLoad(_sendAppName)
 	ctx = objc.context:create();
 	print ("FINISH LOAD DATA: ".._sendAppName);
 	_documentDir=_sendAppName;
-	
+	TEST_SHOWALERT("AA");
 	
 end
 
