@@ -5,7 +5,6 @@ function LKS_DidFinishLoad(_sendAppName)
 	print ("FINISH LOAD DATA: ".._sendAppName);
 	_documentDir=_sendAppName;
 	TEST_SHOWALERT("AA");
-	
 end
 
 
