@@ -8,7 +8,6 @@ function LKS_DidFinishLoad(_sendAppName)
 end
 
 
-
 function LKS_SOHA(strSed)
     ketquatrave= string.match(strSed, '<div id="content">.*<div class="qc_tratu_bt">')
     lks_ketquacut(ketquatrave,'"xong"');
