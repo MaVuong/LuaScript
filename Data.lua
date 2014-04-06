@@ -77,21 +77,21 @@ end
 
 function TEST_SHOWALERT(title)
 	
-	local f,err = io.open(_documentDir.."/testo.txt","w")
-	if not f then return print(err) end
-	f:write("text string written to file testo.txt")
-	f:close()
+	--local f,err = io.open(_documentDir.."/testo.txt","w")
+	--if not f then return print(err) end
+	--f:write("text string written to file testo.txt")
+	--f:close()
 	
 	
 	
-	local alertview = ctx:wrap(objc.class.UIAlertView)("alloc")("init");
-	alertview("setTitle:", "FUCK YOU");
-	alertview("setMessage:", "Do You Like?");
-	alertview("addButtonWithTitle:","YES! i Like :)");
-	alertview("show");
+	--local alertview = ctx:wrap(objc.class.UIAlertView)("alloc")("init");
+	--alertview("setTitle:", "FUCK YOU");
+	--alertview("setMessage:", "Do You Like?");
+	--alertview("addButtonWithTitle:","YES! i Like :)");
+	--alertview("show");
 	
-	
-	
+	local str_=ctx:wrap(objc.class.NSString)("stringWithFormat:","He he he eh");
+	str_("writeToFile:atomically:encoding:error:",_documentDir.."/lua_abc.txt",true,4,nil);
 end
 
 
