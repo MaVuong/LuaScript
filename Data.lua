@@ -26,15 +26,17 @@ function LKS_Vdict(strSed)
 end
 
 function LKS_WikiDict(strSed)
+	
+	strSed=strSed:gsub("<script(.-)</script>","")
     str1='Cách phát âm';
-    str2='<div class="NavContent">';
+    str2=[[<div id="page-secondary-actions">]];
     print (_VERSION);
-    v1=string.find(strSed,str1);
-    v2=string.find(strSed,str2);
-    print(v1);
-    print(v2);
-    ketquatrave = string.sub(strSed, v1+102, v2-1);
-    print(tostring(ketquatrave))  ;
+    v1=string.find(strSed,str1,1 ,true);
+    v2=string.find(strSed,str2,1 ,true);
+
+    --print("v1:",v1);
+    --print("v2:",v2);
+    ketquatrave = string.sub(strSed, v1, v2-1);
     
 
     dodai=string.len(tostring(ketquatrave));
@@ -46,7 +48,7 @@ end
 
 
 function LKS_WikiPedia(strSend)
-	ketquatrave=tostring(strSend);
+	strSend=tostring(strSend);
 	str1='<div id="content" class="content" lang="en" dir="ltr">';
 	str2='<div id="page-secondary-actions">';
 	v1=string.find(strSend,str1);
