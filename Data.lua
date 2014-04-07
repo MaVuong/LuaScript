@@ -13,7 +13,9 @@ function LKS_SOHA(strSed)
 end
 
 function LKS_Vdict(strSed)
+	strp1='src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> </div> ';
     ketquatrave= string.match(strSed, 'src="http://pagead2.googlesyndication.com/pagead/show_ads.js">.*<div class="clear"></div>');
+	ketquatrave=string.sub(ketquatrave,string.len(strp1),string.len(ketquatrave));
     print (tostring(ketquatrave));
     dodai=string.len(tostring(ketquatrave));
     if dodai<10 then
@@ -90,8 +92,8 @@ function TEST_SHOWALERT(title)
 	--alertview("addButtonWithTitle:","YES! i Like :)");
 	--alertview("show");
 	
-	local str_=ctx:wrap(objc.class.NSString)("stringWithFormat:","He he he eh");
-	str_("writeToFile:atomically:encoding:error:",_documentDir.."/lua_abc.txt",true,4,nil);
+	--local str_=ctx:wrap(objc.class.NSString)("stringWithFormat:","He he he eh");
+	--str_("writeToFile:atomically:encoding:error:",_documentDir.."/lua_abc.txt",true,4,nil);
 end
 
 
