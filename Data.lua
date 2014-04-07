@@ -46,6 +46,7 @@ end
 
 
 function LKS_WikiPedia(strSend)
+	ketquatrave=tostring(strSend);
 	str1='<div id="content" class="content" lang="en" dir="ltr">';
 	str2='<div id="page-secondary-actions">';
 	v1=string.find(strSend,str1);
@@ -53,13 +54,16 @@ function LKS_WikiPedia(strSend)
 	print(v1);
 	print(v2);
 	ketquatrave = string.sub(strSend, v1, v2);
-	print(tostring(ketquatrave))  ;
-
+	
+	ketquatrave=ketquatrave:gsub("<img(.-)>","")
 
 	dodai=string.len(tostring(ketquatrave));
 	 if dodai <10 then
     	  ketquatrave="Error";
   	end
+	
+	
+	--print(tostring(ketquatrave))  ;
 	lks_ketquacut(ketquatrave,'"xong"');
 end
 
