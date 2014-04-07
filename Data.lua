@@ -28,7 +28,7 @@ end
 function LKS_WikiDict(strSed)
 	
 	strSed=strSed:gsub("<script(.-)</script>","")
-    str1='Cách phát âm';
+    str1='<span class="mw-headline"';
     str2=[[<div id="page-secondary-actions">]];
     print (_VERSION);
     v1=string.find(strSed,str1,1 ,true);
