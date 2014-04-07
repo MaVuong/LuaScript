@@ -45,7 +45,23 @@ function LKS_WikiDict(strSed)
 end
 
 
+function LKS_WikiPedia(strSend)
+	str1='<div id="content" class="content" lang="en" dir="ltr">';
+	str2='<div id="page-secondary-actions">';
+	v1=string.find(strSend,str1);
+	v2=string.find(strSend,str2);
+	print(v1);
+	print(v2);
+	ketquatrave = string.sub(strSend, v1, v2);
+	print(tostring(ketquatrave))  ;
 
+
+	dodai=string.len(tostring(ketquatrave));
+	 if dodai <10 then
+    	  ketquatrave="Error";
+  	end
+	lks_ketquacut(ketquatrave,'"xong"');
+end
 
 
 
