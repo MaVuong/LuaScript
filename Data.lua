@@ -15,11 +15,14 @@ end
 function LKS_Vdict(strSed)
 	strp1='src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> </div> ';
     ketquatrave= string.match(strSed, 'src="http://pagead2.googlesyndication.com/pagead/show_ads.js">.*<div class="clear"></div>');
-	ketquatrave=string.sub(ketquatrave,string.len(strp1),string.len(ketquatrave));
+	if string.len(tostring(ketquatrave)) > string.len(strp1) then
+		ketquatrave=string.sub(ketquatrave,string.len(strp1),string.len(ketquatrave));
+	end
+	
     print (tostring(ketquatrave));
     dodai=string.len(tostring(ketquatrave));
     if dodai<10 then
-        ketquatrave='Error HTML';
+        ketquatrave='Not Found Data';
     end
 
     lks_ketquacut(ketquatrave,'"xong"');
