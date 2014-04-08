@@ -126,7 +126,7 @@ end
 
 function getFeedTraTuOnline()
 	local _strRT='[ {"tentrang":"Vdict","FN_getURL":"getVdict","FNGetHTML":"LKS_Vdict"}, {"tentrang":"tra từ soha","FN_getURL":"getURLTraTuShoHa","FNGetHTML":"LKS_SOHA"}, {"tentrang":"Wiki-Dict","FN_getURL":"getURLWikiDict","FNGetHTML":"LKS_WikiDict"} ]';
-	lks_ketquacut (_strRT.."AAA");
+	lks_ketquacut (_strRT);
 end
 
 
