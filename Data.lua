@@ -29,27 +29,21 @@ function LKS_Vdict(strSed)
 end
 
 function LKS_WikiDict(strSed)
-	
 	strSed=strSed:gsub("<script(.-)</script>","")
     str1='<span class="mw-headline"';
     str2=[[<div id="page-secondary-actions">]];
     print (_VERSION);
     v1=string.find(strSed,str1,1 ,true);
     v2=string.find(strSed,str2,1 ,true);
-
     --print("v1:",v1);
     --print("v2:",v2);
     ketquatrave = string.sub(strSed, v1, v2-1);
-    
-
     dodai=string.len(tostring(ketquatrave));
       if dodai <10 then
         ketquatrave="Error";
       end
     lks_ketquacut(ketquatrave,'"xong"');
 end
-
-
 function LKS_WikiPedia(strSend)
 	strSend=tostring(strSend);
 	str1='<div id="content" class="content" lang="en" dir="ltr">';
@@ -66,15 +60,10 @@ function LKS_WikiPedia(strSend)
 	 if dodai <10 then
     	  ketquatrave="Error";
   	end
-	
-	
 	--print(tostring(ketquatrave))  ;
 	lks_ketquacut(ketquatrave,'"xong"');
 end
-
-
-
------------------FUNCTION LAY LINK WIKIPEDIA--------------
+-----------------FUNCTION LAY LINK TU CAC NGUON--------------
 
 function getURLTraTuShoHa(tratu_)
 	t = {}
@@ -95,61 +84,56 @@ function getURLTraTuShoHa(tratu_)
 	lks_ketquacut(_strurl);
 end
 
+function getURLWikiDict(tratu_)
+	t = {}
+	for k, v in string.gmatch(tratu_, "(%w+)=(%w+)") do
+	   t[k] = v
+	end
 
+	local _tukhoa=t["tukhoa"];
+	local _adict=t["adict"];
 
-
-
----------------TEST FUNCTION----------------
-function LKS_LoadDataFromURLviaPOST_TEST(thamso)
-	_content_type ="application/x-www-form-urlencoded";---[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"] content_type la tham so mac dinh
-	_bodyData="grant_type=client_credentials&client_id=LEKHACSONABC&client_secret=SAJn%2Bytel%2FJG6JFUgATs79qZVJ8oC3KgN8KIdya4UfA%3D&scope=http://api.microsofttranslator.com";--- data nay se duoc post di
-	_urlRequest="https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
-	_nextFunC="khonglamgica";--- ten function tiep theo ma user muon nhan de truyen tham so
-	print(thamso);
-	lks_fnPostHTTP(_urlRequest,_nextFunC,_bodyData,_content_type)
+	print(_tukhoa,_adict);
+	
+	local _ev="en";
+	if _adict =="NO" then
+		_ev="vi";
+	end
+	local _strurl="http://".._ev..".m.wiktionary.org/wiki/".._tukhoa
+	lks_ketquacut (_strurl);
 end
 
 
-function LKS_LoadDataFromURLviaGT_TEST(thamsoURL)
-	_urlRequest="http://dantri.com.vn";
-	_nextFunc="HienThiThongTin"
-	print ("vao day"..thamsoURL);
-	lks_fnGetHTTP(_urlRequest,_nextFunc);
+function getVdict(tratu_)
+	t = {}
+	for k, v in string.gmatch(tratu_, "(%w+)=(%w+)") do
+	   t[k] = v
+	end
+
+	local _tukhoa=t["tukhoa"];
+	local _adict=t["adict"];
+
+	print(_tukhoa,_adict);
+	
+	local _ev="1";
+	if _adict =="NO" then
+		_ev="2";
+	end
+	local _strurl="http://vdict.com/".._tukhoa..",".._ev..",0,0.html"
+	lks_ketquacut (_strurl);
 end
 
-function HienThiThongTin(_strhienthi)
-	print("ket qua tra ve la: ".._strhienthi);
-	
-end
 
-function TEST_SHOWALERT(title)
-	
-	--local f,err = io.open(_documentDir.."/testo.txt","w")
-	--if not f then return print(err) end
-	--f:write("text string written to file testo.txt")
-	--f:close()
-	
-	
-	
-	--local alertview = ctx:wrap(objc.class.UIAlertView)("alloc")("init");
-	--alertview("setTitle:", "FUCK YOU");
-	--alertview("setMessage:", "Do You Like?");
-	--alertview("addButtonWithTitle:","YES! i Like :)");
-	--alertview("show");
-	
-	--local str_=ctx:wrap(objc.class.NSString)("stringWithFormat:","He he he eh");
-	--str_("writeToFile:atomically:encoding:error:",_documentDir.."/lua_abc.txt",true,4,nil);
+function getFeedTraTuOnline
+	local strRT='[ {"tentrang":"Vdict","FN_getURL":"getVdict","FNGetHTML":"LKS_Vdict"}, {"tentrang":"tra từ soha","FN_getURL":"getURLTraTuShoHa","FNGetHTML":"LKS_SOHA"}, {"tentrang":"Wiki-Dict","FN_getURL":"getURLWikiDict","FNGetHTML":"LKS_WikiDict"} ]';
+	lks_ketquacut(strRT);
 end
 
 
 
-function TEST_OPENWEBVIEW(title)
-	
-	local application = ctx:wrap(objc.class.UIApplication)("sharedApplication")("delegate");
-	local windows=application("window");
-	local lbb=windows("viewWithTag:", 100);
-	lbb("setText:","chao cai noi");
-end
+local _strsend="tukhoa=world,adict=YES";
+
+print(getVdict(_strsend));
 
 
 
