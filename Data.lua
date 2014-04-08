@@ -74,6 +74,26 @@ end
 
 
 
+-----------------FUNCTION LAY LINK WIKIPEDIA--------------
+
+function getURLTraTuShoHa(tratu_)
+	t = {}
+	for k, v in string.gmatch(tratu_, "(%w+)=(%w+)") do
+	   t[k] = v
+	end
+
+	local _tukhoa=t["tukhoa"];
+	local _adict=t["adict"];
+
+	print(_tukhoa,_adict);
+	
+	local _ev="en_vn";
+	if _adict =="NO" then
+		_ev="vn_en";
+	end
+	local _strurl="http://m.tratu.soha.vn/?title=".._tukhoa.."&dict=".._ev;
+	lks_ketquacut(_strurl);
+end
 
 
 
