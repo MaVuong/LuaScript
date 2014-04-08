@@ -131,9 +131,6 @@ end
 
 
 
-local _strsend="tukhoa=world,adict=YES";
-
-print(getVdict(_strsend));
 
 
 
